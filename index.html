@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>haxiss.com</title>
+<meta name="description" content="Consultoria, suporte e soluções empresariais com direção, organização e resultado. Gestão, RH, capacitação, apoio técnico, SSMA, governança e ESG.">
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap">
+<style>
+/* ========== TOKENS ========== */
+:root{
+  --bg:            #E6E3DA;   /* light sand gray */
+  --bg-soft:       #DAD7CC;
+  --surface:       #F4F2EC;   /* warm off-white cards */
+  --ink:           #141C30;
+  --ink-soft:      #44506A;
+  --ink-mute:      #7C8499;
+  --navy-deep:     #00102E;
+  --navy:          #001B5B;
+  --navy-mid:      #0A2E7A;
+  --blue:          #1F6FEB;   /* electric accent from the logo swoosh */
+  --blue-bright:   #6FA6FF;
+  --blue-deep:     #0B4DC0;
+  --blue-soft:     #BBD4FB;
+  --copper:        #C2703D;   /* accent — warm copper */
+  --copper-deep:   #A85A2C;
+  --copper-soft:   #E2B48E;
+  --copper-tint:   rgba(194,112,61,.12);
+  --silver:        #AEBACE;
+  --silver-light:  #DCE3EE;
+  --dark:          #0B1220;
+  --line:          rgba(20, 28, 48, .08);
+  --line-strong:   rgba(20, 28, 48, .14);
+  --hair:          rgba(20, 28, 48, .10);
+  --radius-sm:     7px;
+  --radius:        12px;
+  --radius-lg:     18px;
+  --shadow-1:      0 1px 2px rgba(20,28,48,.04), 0 3px 14px rgba(20,28,48,.045);
+  --shadow-2:      0 10px 30px -16px rgba(20,28,48,.22), 0 2px 10px rgba(20,28,48,.05);
+  --shadow-3:      0 34px 70px -34px rgba(0,18,56,.34), 0 8px 26px rgba(20,28,48,.07);
+  --shadow-blue:   0 22px 50px -26px rgba(0,27,91,.5);
+  --serif:         'Spectral', Georgia, 'Times New Roman', serif;
+  --ease:          cubic-bezier(.2,.7,.2,1);
+  --t-fast:        .25s var(--ease);
+  --t:             .4s var(--ease);
+  --t-slow:        .8s var(--ease);
+  --container:     1240px;
+}
+
+/* ========== RESET ========== */
+*,*::before,*::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html{ background: var(--bg); }
+body{
+  margin: 0;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  color: var(--ink);
+  background: transparent;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+img{ max-width: 100%; display: block; }
+a{ color: inherit; text-decoration: none; }
+button{ font-family: inherit; cursor: pointer; border: 0; background: none; }
+:focus-visible{ outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+
+/* ========== TYPE ========== */
+.eyebrow{
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+}
+.eyebrow::before{ content:""; width: 26px; height: 1px; background: var(--copper); }
+.eyebrow.on-dark{ color: rgba(255,255,255,.62); }
+.eyebrow.on-dark::before{ background: var(--copper-soft); }
+.eyebrow.center{ justify-content: center; }
+
+h1,h2,h3,h4{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.015em;
+  line-height: 1.12;
+  margin: 0;
+  text-wrap: balance;
+}
+h1{ font-family: var(--serif); font-size: clamp(40px, 5.4vw, 68px); font-weight: 500; letter-spacing: -.012em; line-height: 1.05; }
+h2{ font-family: var(--serif); font-size: clamp(30px, 3.4vw, 48px); font-weight: 500; letter-spacing: -.01em; line-height: 1.1; }
+h3{ font-size: clamp(19px, 1.5vw, 22px); font-weight: 600; letter-spacing: -.008em; }
+p{ margin: 0; color: var(--ink-soft); }
+
+.container{ width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+@media (max-width: 640px){ .container{ padding: 0 20px; } }
+
+section{ padding: clamp(72px, 9vw, 128px) 0; position: relative; }
+
+/* ========== BUTTONS ========== */
+.btn{
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 24px; border-radius: 999px;
+  font-weight: 600; font-size: 14px; letter-spacing: .01em;
+  transition: all .3s var(--ease); white-space: nowrap;
+  border: 1px solid transparent; will-change: transform;
+}
+.btn svg{ width: 18px; height: 18px; }
+.btn-blue{
+  background: var(--copper);
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 12px 26px -16px rgba(168,90,44,.95);
+}
+.btn-blue:hover{ background: var(--copper-deep); transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 18px 34px -16px rgba(168,90,44,.95); }
+.btn-navy{ background: var(--navy); color: #fff; box-shadow: var(--shadow-2); }
+.btn-navy:hover{ background: var(--navy-mid); transform: translateY(-2px); box-shadow: var(--shadow-3); }
+.btn-ghost{ color: var(--ink); border-color: var(--line-strong); background: rgba(255,255,255,.6); backdrop-filter: blur(6px); }
+.btn-ghost:hover{ background: #fff; border-color: var(--ink); transform: translateY(-2px); }
+.btn-ghost.on-dark{ color: #fff; border-color: rgba(255,255,255,.28); background: rgba(255,255,255,.05); }
+.btn-ghost.on-dark:hover{ background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.55); }
+.btn-wa{ background: #25D366; color: #06351a; box-shadow: 0 10px 28px -10px rgba(37,211,102,.6); }
+.btn-wa:hover{ transform: translateY(-2px); filter: brightness(1.04); }
+
+.btn-link{
+  color: var(--copper-deep); font-weight: 600; font-size: 13px; letter-spacing: .03em;
+  text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px;
+  transition: gap .3s var(--ease), color .3s var(--ease);
+}
+.btn-link::after{ content: "→"; transition: transform .3s var(--ease); }
+.btn-link:hover{ color: var(--copper); gap: 12px; }
+.btn-link:hover::after{ transform: translateX(4px); }
+
+/* ========== HEADER ========== */
+.header{
+  position: fixed; inset: 0 0 auto 0; z-index: 100; padding: 20px 0;
+  transition: background .35s var(--ease), padding .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+.header.scrolled{
+  background: rgba(255,255,255,.82);
+  backdrop-filter: saturate(160%) blur(18px);
+  -webkit-backdrop-filter: saturate(160%) blur(18px);
+  border-bottom-color: var(--line); padding: 12px 0;
+  box-shadow: 0 8px 30px -18px rgba(16,33,59,.3);
+}
+.header-inner{ display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 40px; }
+.brand{ display: inline-flex; align-items: center; gap: 13px; }
+.brand-mark{
+  width: 48px; height: 48px; border-radius: 12px;
+  background-image: url("assets/logo.png");
+  background-size: 165%; background-position: 50% 30%;
+  background-repeat: no-repeat;
+  box-shadow: 0 6px 18px -6px rgba(0,27,91,.6), inset 0 0 0 1px rgba(255,255,255,.06);
+  flex-shrink: 0; transition: transform var(--t);
+}
+.brand:hover .brand-mark{ transform: scale(1.05); }
+.brand-text{ display: flex; flex-direction: column; line-height: 1; }
+.brand-name{ font-weight: 800; font-size: 17px; letter-spacing: .16em; color: var(--ink); transition: color var(--t); }
+.header:not(.scrolled) .brand-name{ color: #fff; }
+.brand-tag{ margin-top: 5px; font-size: 9px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-mute); transition: color var(--t); }
+.header:not(.scrolled) .brand-tag{ color: rgba(255,255,255,.6); }
+
+.nav{ justify-self: center; display: flex; gap: 2px; }
+.nav a{
+  position: relative; padding: 10px 14px; font-size: 13.5px; font-weight: 500; letter-spacing: .01em;
+  color: var(--ink-soft); transition: color var(--t-fast);
+}
+.header:not(.scrolled) .nav a{ color: rgba(255,255,255,.82); }
+.nav a::after{ content:""; position: absolute; left: 14px; right: 14px; bottom: 6px; height: 2px; background: var(--blue); border-radius: 2px; transform: scaleX(0); transform-origin: left; transition: transform var(--t); }
+.nav a:hover{ color: var(--blue-deep); }
+.header:not(.scrolled) .nav a:hover{ color: #fff; }
+.nav a:hover::after{ transform: scaleX(1); }
+
+.header-cta{ display: inline-flex; gap: 12px; align-items: center; }
+.theme-toggle{ width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--line-strong); color: var(--ink); background: transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: color var(--t), border-color var(--t), background var(--t-fast); }
+.theme-toggle:hover{ background: rgba(31,111,235,.08); border-color: var(--blue); color: var(--blue-deep); }
+.header:not(.scrolled) .theme-toggle{ color: #fff; border-color: rgba(255,255,255,.25); }
+.header:not(.scrolled) .theme-toggle:hover{ background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.5); color: #fff; }
+.theme-toggle svg{ width: 19px; height: 19px; }
+.theme-toggle .i-moon{ display: none; }
+.theme-toggle .i-sun{ display: block; }
+:root[data-mood="dark"] .theme-toggle .i-moon{ display: block; }
+:root[data-mood="dark"] .theme-toggle .i-sun{ display: none; }
+.menu-toggle{ display: none; width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--line-strong); color: var(--ink); align-items: center; justify-content: center; }
+.header:not(.scrolled) .menu-toggle{ color: #fff; border-color: rgba(255,255,255,.25); }
+
+@media (max-width: 1080px){ .nav a{ padding: 10px 11px; font-size: 13px; } }
+@media (max-width: 980px){
+  .nav{ display: none; }
+  .header-cta .btn-blue span{ display: none; }
+  .header-cta .btn-blue{ padding: 12px 16px; }
+}
+@media (max-width: 640px){ .menu-toggle{ display: inline-flex; } .header-cta .btn-blue{ display: none; } .brand-tag{ display: none; } }
+
+.drawer{ position: fixed; inset: 0; background: rgba(0,16,46,.95); backdrop-filter: blur(14px); z-index: 200; display: flex; flex-direction: column; padding: 28px 24px; transform: translateX(100%); transition: transform .4s var(--ease); }
+.drawer.open{ transform: translateX(0); }
+.drawer-top{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+.drawer-close{ width: 44px; height: 44px; color: #fff; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); display: inline-flex; align-items: center; justify-content: center; }
+.drawer a{ color: #fff; font-size: 21px; font-weight: 500; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+
+/* ========== HERO ========== */
+.hero{ position: relative; min-height: 100vh; padding: 0; display: flex; align-items: center; overflow: hidden; isolation: isolate; color: #fff; }
+.hero-bg{
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(0,14,40,.95) 0%, rgba(0,18,52,.82) 42%, rgba(0,22,66,.5) 100%),
+    linear-gradient(180deg, rgba(0,14,40,.55) 0%, rgba(0,14,40,.1) 35%, rgba(0,12,34,.78) 100%),
+    url("assets/hero-bg.jpg");
+  background-size: cover; background-position: center; transform: scale(1.08); will-change: transform; z-index: -2;
+}
+.hero-bg::after{
+  content:""; position: absolute; inset: 0;
+  background:
+    radial-gradient(58% 50% at 82% 24%, rgba(31,111,235,.32), transparent 70%),
+    radial-gradient(50% 55% at 8% 92%, rgba(0,27,91,.6), transparent 70%);
+  mix-blend-mode: screen;
+}
+.hero-grid-overlay{
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 80%);
+  z-index: -1;
+}
+.hero-inner{ display: grid; grid-template-columns: 1.4fr .6fr; gap: 64px; align-items: center; padding: 150px 0 96px; }
+.hero-copy{ max-width: 660px; }
+.hero h1{ color: #fff; margin-top: 26px; }
+.hero h1 .accent{
+  font-style: italic; font-weight: 400;
+  background: linear-gradient(95deg, #8C6B1F 0%, #D3AF37 24%, #F7E89B 48%, #D3AF37 72%, #A87C26 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: goldShine 6s ease-in-out infinite;
+}
+@keyframes goldShine{ 0%,100%{ background-position: 0% 50%; } 50%{ background-position: 100% 50%; } }
+
+/* Reusable metallic gold text (tuned to read on light backgrounds) */
+.gold-text{
+  background: linear-gradient(95deg, #8C6B1F 0%, #C19A2E 30%, #D3AF37 50%, #B8860B 72%, #8C6B1F 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  font-weight: 700;
+}
+:root[data-mood="dark"] .gold-text{
+  background: linear-gradient(95deg, #B8860B 0%, #D3AF37 28%, #F7E89B 50%, #D3AF37 72%, #A87C26 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+.gold-bright{
+  background: linear-gradient(95deg, #B8860B 0%, #D3AF37 28%, #F7E89B 50%, #D3AF37 72%, #A87C26 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  font-weight: 600;
+}
+.hero-sub{ margin-top: 26px; font-size: clamp(16px, 1.2vw, 19px); line-height: 1.66; color: rgba(255,255,255,.8); max-width: 580px; }
+.hero-actions{ margin-top: 42px; display: flex; flex-wrap: wrap; gap: 14px; }
+.hero-pillars{
+  margin-top: 60px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,.13);
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 600px;
+}
+.pillar .k{ font-size: 18px; font-weight: 700; color: #fff; letter-spacing: .01em; display: flex; align-items: center; gap: 9px; }
+.pillar .k svg{ width: 18px; height: 18px; color: var(--copper-soft); }
+.pillar .v{ margin-top: 8px; font-size: 13px; color: rgba(255,255,255,.72); line-height: 1.5; }
+
+/* hero logo */
+.hero-visual{ position: relative; justify-self: end; width: 100%; max-width: 320px; }
+.hero-logo-frame{
+  position: relative; border-radius: 22px; overflow: hidden;
+  border: 1px solid rgba(120,170,255,.22);
+  box-shadow: 0 30px 70px -34px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.04), 0 0 60px -34px rgba(31,111,235,.45);
+}
+.hero-logo-frame img{ width: 100%; display: block; }
+.hero-logo-frame::after{
+  content:""; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(120,170,255,.12), transparent 38%);
+  pointer-events: none;
+}
+.hero-logo-frame::before{
+  content:""; position: absolute; top: -60%; left: -30%; width: 60%; height: 220%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+  transform: rotate(18deg); animation: sheen 6s ease-in-out infinite; pointer-events: none;
+}
+@keyframes sheen{ 0%,72%{ left: -40%; } 86%,100%{ left: 130%; } }
+
+.hero-scroll{ position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; color: rgba(255,255,255,.55); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; }
+.hero-scroll .line{ width: 1px; height: 38px; background: linear-gradient(to bottom, rgba(255,255,255,.5), transparent); position: relative; overflow: hidden; }
+.hero-scroll .line::after{ content:""; position: absolute; top: -38px; left: 0; width: 100%; height: 38px; background: linear-gradient(to bottom, transparent, var(--blue-bright)); animation: scrolldown 2.4s ease-in-out infinite; }
+@keyframes scrolldown{ 0%{ top: -38px; } 60%,100%{ top: 38px; } }
+
+@media (max-width: 980px){
+  .hero-inner{ grid-template-columns: 1fr; gap: 40px; padding: 124px 0 80px; }
+  .hero-visual{ justify-self: center; max-width: 230px; order: -1; }
+}
+@media (max-width: 560px){ .hero-pillars{ grid-template-columns: 1fr; gap: 18px; } }
+
+/* ========== STRATEGIC AREAS STRIP ========== */
+.areas{ background: var(--surface); border-bottom: 1px solid var(--line); padding: 30px 0; }
+.areas-inner{ display: flex; align-items: center; gap: 40px; justify-content: center; flex-wrap: wrap; }
+.areas-label{ font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-mute); font-weight: 700; }
+.areas-items{ display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.area-pill{
+  font-size: 13px; font-weight: 600; color: var(--navy); padding: 9px 16px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line-strong); transition: all var(--t);
+}
+.area-pill:hover{ background: var(--navy); color: #fff; border-color: var(--navy); transform: translateY(-2px); }
+
+/* ========== ABOUT / QUEM SOMOS ========== */
+.about{ background: var(--bg); }
+.about-grid{ display: grid; grid-template-columns: .92fr 1.08fr; gap: 76px; align-items: center; }
+.about-figure{ position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/5; box-shadow: var(--shadow-3); }
+.about-figure img{ width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.about-figure:hover img{ transform: scale(1.05); }
+.about-figure::after{ content:""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(0,16,46,.5)); }
+.axis-badge{
+  position: absolute; left: 24px; bottom: 24px; right: 24px; z-index: 2;
+  background: rgba(255,255,255,.96); backdrop-filter: blur(10px); border-radius: 16px; padding: 20px 22px;
+  box-shadow: var(--shadow-2); display: flex; gap: 16px; align-items: center;
+}
+.axis-badge .ic{ width: 46px; height: 46px; border-radius: 11px; flex-shrink: 0; display: grid; place-items: center; color: #fff; background: var(--navy); }
+.axis-badge .ic svg{ width: 24px; height: 24px; }
+.axis-badge .tt{ font-size: 12px; line-height: 1.5; color: var(--ink-soft); }
+.axis-badge .tt b{ color: var(--ink); font-weight: 700; }
+
+.about h2{ margin-top: 18px; }
+.about-lead{ margin-top: 22px; font-size: 18px; color: var(--ink-soft); line-height: 1.7; }
+.about-lead b{ color: var(--ink); font-weight: 600; }
+.about-body{ margin-top: 18px; font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+.about-quote{
+  margin-top: 30px; padding: 4px 0 4px 26px;
+  border-left: 2px solid var(--navy);
+}
+.about-quote p{ font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--ink); line-height: 1.5; }
+.about-quote .lat{ font-style: normal; font-weight: 600; color: var(--navy); }
+.about-cta{ margin-top: 32px; display: inline-flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+
+@media (max-width: 920px){ .about-grid{ grid-template-columns: 1fr; gap: 52px; } .about-figure{ aspect-ratio: 16/11; max-width: 560px; } }
+
+/* ========== MVV ========== */
+.mvv{ background: var(--bg-soft); }
+.mvv-top{ display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.mvv-card{
+  position: relative; overflow: hidden; border-radius: var(--radius-lg); padding: 40px 38px; color: #fff;
+  background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
+  box-shadow: var(--shadow-3);
+}
+.mvv-card.alt{ background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%); }
+.mvv-card.alt::after{ content:""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--copper), var(--copper-soft)); z-index: 2; }
+.mvv-card::before{ content:""; position: absolute; top: -30%; right: -10%; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(77,155,255,.28), transparent 65%); }
+.mvv-card .mh{ display: flex; align-items: center; gap: 14px; margin-bottom: 18px; position: relative; }
+.mvv-card .mh .ic{ width: 48px; height: 48px; border-radius: 13px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); display: grid; place-items: center; color: var(--blue-bright); }
+.mvv-card .mh .ic svg{ width: 24px; height: 24px; }
+.mvv-card .mh .ic-img{ background: #fff; border-color: rgba(255,255,255,.9); overflow: hidden; padding: 5px; }
+.mvv-card .mh .ic-img img{ width: 100%; height: 100%; object-fit: contain; display: block; }
+.mvv-card h3{ color: #fff; font-size: 22px; letter-spacing: .06em; text-transform: uppercase; }
+.mvv-card p{ color: rgba(255,255,255,.8); font-size: 15px; line-height: 1.7; position: relative; }
+
+.values-head{ margin-bottom: 36px; }
+.values-head h3{ margin-top: 14px; font-family: var(--serif); font-size: clamp(26px,2.6vw,36px); font-weight: 500; letter-spacing: -.01em; }
+.values-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.value{
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px;
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+.value:hover{ transform: translateY(-5px); box-shadow: var(--shadow-2); border-color: var(--line-strong); }
+.value .ic{ width: 46px; height: 46px; border-radius: 11px; display: grid; place-items: center; margin-bottom: 16px; color: #B8860B; background: rgba(211,175,55,.1); border: 1px solid rgba(211,175,55,.3); }
+.value .ic svg{ width: 23px; height: 23px; }
+.value h4{ font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.value p{ font-size: 13.5px; line-height: 1.6; }
+@media (max-width: 920px){ .mvv-top{ grid-template-columns: 1fr; } .values-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 540px){ .values-grid{ grid-template-columns: 1fr; } }
+
+/* ========== SECTION HEAD ========== */
+.section-head{ display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: end; margin-bottom: 54px; }
+.section-head h2{ margin-top: 16px; }
+.section-head p{ font-size: 16px; max-width: 460px; line-height: 1.7; }
+.section-head.center{ display: block; text-align: center; max-width: 760px; margin: 0 auto 54px; }
+.section-head.center p{ max-width: 600px; margin: 16px auto 0; }
+@media (max-width: 880px){ .section-head{ grid-template-columns: 1fr; gap: 22px; align-items: start; } }
+
+/* ========== SERVICES ========== */
+.services{ background: var(--bg); position: relative; }
+.svc-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.svc{
+  position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 32px 30px; overflow: hidden; isolation: isolate; display: flex; flex-direction: column;
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+.svc::before{ content:""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), transparent); transform: scaleX(0); transform-origin: left; transition: transform var(--t-slow); }
+.svc:hover{ transform: translateY(-6px); border-color: var(--line-strong); box-shadow: var(--shadow-3); }
+.svc:hover::before{ transform: scaleX(1); }
+.svc-icon{ width: 54px; height: 54px; border-radius: 13px; display: grid; place-items: center; margin-bottom: 22px; color: #D3AF37; background: var(--navy); box-shadow: inset 0 1px 0 rgba(255,255,255,.1); transition: transform var(--t), background var(--t); }
+.svc:hover .svc-icon{ background: var(--navy-mid); }
+.svc:hover .svc-icon{ transform: translateY(-2px); }
+.svc-icon svg{ width: 26px; height: 26px; }
+.svc h3{ margin-bottom: 16px; }
+.svc ul{ list-style: none; padding: 0; margin: 0; display: grid; gap: 11px; }
+.svc ul li{ display: grid; grid-template-columns: 18px 1fr; gap: 11px; font-size: 14px; color: var(--ink-soft); line-height: 1.45; }
+.svc ul li svg{ width: 18px; height: 18px; color: var(--blue); margin-top: 2px; }
+@media (max-width: 980px){ .svc-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 640px){ .svc-grid{ grid-template-columns: 1fr; } }
+
+/* ========== SSMA BAND ========== */
+.ssma{ background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%); color: #fff; overflow: hidden; }
+.ssma::before{ content:""; position: absolute; inset: 0; background: radial-gradient(50% 60% at 85% 20%, rgba(31,111,235,.22), transparent 70%); pointer-events: none; }
+.ssma-grid{ display: grid; grid-template-columns: 1fr 1.05fr; gap: 70px; align-items: center; position: relative; }
+.ssma h2{ color: #fff; margin-top: 18px; }
+.ssma-lead{ margin-top: 22px; font-size: 18px; color: rgba(255,255,255,.82); line-height: 1.7; }
+.ssma-lead b{ color: #fff; font-weight: 600; }
+.ssma-list{ list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.ssma-list li{ display: grid; grid-template-columns: 20px 1fr; gap: 12px; font-size: 14px; color: rgba(255,255,255,.78); line-height: 1.5; }
+.ssma-list li svg{ width: 20px; height: 20px; color: #D3AF37; margin-top: 1px; filter: drop-shadow(0 1px 1px rgba(0,0,0,.3)); }
+.ssma-figure{ position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 5/4; box-shadow: 0 40px 80px -30px rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.1); }
+.ssma-figure img{ width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.ssma-figure:hover img{ transform: scale(1.05); }
+.ssma-tag{ position: absolute; top: 20px; left: 20px; z-index: 2; background: rgba(0,16,46,.7); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.16); padding: 8px 14px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #fff; }
+@media (max-width: 920px){ .ssma-grid{ grid-template-columns: 1fr; gap: 48px; } .ssma-figure{ order: -1; aspect-ratio: 16/10; } .ssma-list{ grid-template-columns: 1fr; } }
+
+/* ========== ESG / GOVERNANCE ========== */
+.esg{ background: var(--bg-soft); }
+.esg-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.esg-card{
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 34px 30px;
+  position: relative; overflow: hidden; transition: transform var(--t), box-shadow var(--t);
+}
+.esg-card:hover{ transform: translateY(-5px); box-shadow: var(--shadow-2); }
+.esg-card .tag{ font-size: 10.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--blue-deep); }
+.esg-card .ic{ width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 20px; color: #fff; }
+.esg-card .ic svg{ width: 25px; height: 25px; }
+.esg-card .ic-photo{ background: none !important; border: 0; width: 56px; height: 56px; }
+.esg-card .ic-photo img{ width: 100%; height: 100%; object-fit: contain; display: block; }
+.esg-card.env .ic{ background: linear-gradient(135deg, #1F9D6B, #0E6B47); }
+.esg-card.soc .ic{ background: linear-gradient(135deg, #2E80FF, #0B4DC0); }
+.esg-card.gov .ic{ background: linear-gradient(135deg, #4A5A78, #1E2B45); }
+.esg-card.env .tag{ color: #0E6B47; }
+.esg-card.gov .tag{ color: #2C3A57; }
+.esg-card h3{ margin: 6px 0 12px; }
+.esg-card p{ font-size: 14px; line-height: 1.65; }
+.esg-card ul{ list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 9px; }
+.esg-card ul li{ display: grid; grid-template-columns: 16px 1fr; gap: 10px; font-size: 13.5px; color: var(--ink-soft); }
+.esg-card ul li svg{ width: 16px; height: 16px; color: var(--blue); margin-top: 3px; }
+
+.compliance{ margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.comp-card{ background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px 30px; }
+.comp-card h3{ margin-bottom: 10px; display: flex; align-items: center; gap: 12px; }
+.comp-card h3 svg{ width: 22px; height: 22px; color: var(--blue-deep); }
+.comp-card p{ font-size: 14px; line-height: 1.65; margin-bottom: 16px; }
+.comp-card ul{ list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.comp-card ul li{ display: grid; grid-template-columns: 16px 1fr; gap: 10px; font-size: 13.5px; color: var(--ink-soft); }
+.comp-card ul li svg{ width: 16px; height: 16px; color: var(--blue); margin-top: 3px; }
+@media (max-width: 980px){ .esg-grid{ grid-template-columns: 1fr; } .compliance{ grid-template-columns: 1fr; } }
+
+/* ========== KNOWLEDGE ========== */
+.knowledge{ background: var(--bg); }
+.know-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.know-items{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
+.know-item{ background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px; display: flex; gap: 14px; align-items: center; transition: all var(--t); }
+.know-item:hover{ border-color: var(--blue); box-shadow: var(--shadow-1); transform: translateY(-3px); }
+.know-item .ic{ width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0; display: grid; place-items: center; color: var(--navy); background: var(--bg); border: 1px solid var(--hair); }
+.know-item .ic svg{ width: 21px; height: 21px; }
+.know-item .nm{ font-weight: 600; font-size: 15px; color: var(--ink); }
+.know-figure{ border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; box-shadow: var(--shadow-3); position: relative; }
+.know-figure img{ width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.know-figure:hover img{ transform: scale(1.05); }
+@media (max-width: 920px){ .know-grid{ grid-template-columns: 1fr; gap: 44px; } .know-figure{ order: -1; aspect-ratio: 16/10; } }
+@media (max-width: 480px){ .know-items{ grid-template-columns: 1fr; } }
+
+/* ========== CLIENTS ========== */
+.clients{ background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 56px 0; }
+.clients-label{ text-align: center; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-mute); font-weight: 700; margin-bottom: 32px; }
+.clients-row{ display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; }
+.client-mark{ font-size: 24px; font-weight: 800; letter-spacing: .04em; color: var(--navy); opacity: .42; transition: opacity var(--t), transform var(--t); }
+.client-mark:hover{ opacity: 1; transform: translateY(-2px); }
+
+/* ========== CTA FINAL ========== */
+.cta-final{ position: relative; overflow: hidden; isolation: isolate; background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-mid) 100%); color: #fff; }
+.cta-final::before{ content:""; position: absolute; inset: -40%; background: radial-gradient(45% 45% at 28% 32%, rgba(31,111,235,.20), transparent 62%), radial-gradient(45% 45% at 78% 70%, rgba(111,166,255,.10), transparent 70%); z-index: -1; animation: rotateGlow 60s linear infinite; }
+@keyframes rotateGlow{ to{ transform: rotate(360deg); } }
+.cta-dots{ position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .55; mask-image: radial-gradient(ellipse 80% 75% at 50% 45%, #000 30%, transparent 85%); -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 45%, #000 30%, transparent 85%); }
+.cta-dots canvas{ display: block; width: 100% !important; height: 100% !important; }
+.cta-inner{ position: relative; z-index: 1; text-align: center; max-width: 820px; margin: 0 auto; }
+.cta-final h2{ color: #fff; margin-top: 20px; }
+.cta-final h2 span{
+  font-style: italic; font-weight: 400;
+  background: linear-gradient(95deg, #B8860B 0%, #D3AF37 26%, #F7E89B 50%, #D3AF37 74%, #A87C26 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: goldShine 6s ease-in-out infinite;
+}
+.cta-final p{ color: rgba(255,255,255,.76); font-size: 18px; line-height: 1.65; margin: 22px auto 0; max-width: 640px; }
+.cta-final .actions{ margin-top: 42px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-xl{ padding: 18px 32px; font-size: 15px; position: relative; }
+.btn-xl.btn-blue::before{ content:""; position: absolute; inset: -4px; border-radius: 999px; background: linear-gradient(135deg, var(--blue), transparent 60%, var(--blue-bright)); z-index: -1; opacity: 0; filter: blur(14px); transition: opacity var(--t); }
+.btn-xl.btn-blue:hover::before{ opacity: 1; }
+.wa-anim{ transform-origin: 50% 60%; animation: waFloat 1.8s ease-in-out infinite; }
+.btn:hover .wa-anim{ animation: waWiggle 1.1s var(--ease) infinite; }
+@keyframes waFloat{
+  0%,100%{ transform: translateY(-3px) rotate(-3deg); }
+  50%{ transform: translateY(3px) rotate(3deg); }
+}
+@keyframes waWiggle{
+  0%,58%,100%{ transform: rotate(0deg) scale(1); }
+  62%{ transform: rotate(-9deg) scale(1.08); }
+  68%{ transform: rotate(8deg) scale(1.08); }
+  74%{ transform: rotate(-6deg) scale(1.05); }
+  80%{ transform: rotate(4deg) scale(1.03); }
+  86%{ transform: rotate(0deg) scale(1); }
+}
+@media (prefers-reduced-motion: reduce){ .wa-anim{ animation: none; } }
+.cta-trust{ margin-top: 46px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; color: rgba(255,255,255,.6); font-size: 13px; }
+.cta-trust span{ display: inline-flex; align-items: center; gap: 8px; }
+.cta-trust svg{ width: 16px; height: 16px; color: #D3AF37; }
+
+/* ========== FOOTER ========== */
+.footer{ background: var(--navy); color: rgba(255,255,255,.7); padding: 78px 0 30px; position: relative; overflow: hidden; }
+.footer::before{ content:""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), transparent); }
+.footer-grid{ display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 52px; padding-bottom: 54px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.footer-brand{ max-width: 360px; }
+.footer-logo{ display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.footer-logo .mark{ width: 56px; height: 56px; background-image: url("assets/logo-hs.png"); background-size: contain; background-position: 50% 50%; background-repeat: no-repeat; }
+.footer-logo .nm{ font-weight: 800; font-size: 18px; color: #fff; letter-spacing: .16em; }
+.footer-logo .tg{ font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: 4px; }
+.footer-brand p{ color: rgba(255,255,255,.6); font-size: 14px; line-height: 1.65; }
+.footer h4{ color: #fff; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; margin-bottom: 22px; }
+.footer ul{ list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.footer ul a{ font-size: 14px; color: rgba(255,255,255,.65); transition: color var(--t-fast), padding-left var(--t-fast); display: inline-block; }
+.footer ul a:hover{ color: var(--blue-bright); padding-left: 6px; }
+.contacts{ display: grid; gap: 14px; }
+.contacts .row{ display: flex; align-items: center; gap: 12px; font-size: 14px; color: rgba(255,255,255,.78); }
+.contacts .row svg{ width: 18px; height: 18px; color: var(--blue-bright); flex-shrink: 0; }
+.socials{ display: flex; gap: 10px; margin-top: 24px; }
+.socials a{ width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); display: grid; place-items: center; color: rgba(255,255,255,.8); transition: all var(--t); }
+.socials a:hover{ background: var(--blue); color: #fff; border-color: var(--blue); transform: translateY(-3px); }
+.socials svg{ width: 18px; height: 18px; }
+.footer-bottom{ padding-top: 28px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 12.5px; color: rgba(255,255,255,.45); }
+.footer-bottom .legal{ display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-bottom .legal a:hover{ color: var(--blue-bright); }
+@media (max-width: 880px){ .footer-grid{ grid-template-columns: 1fr 1fr; gap: 40px; } .footer-brand{ grid-column: 1 / -1; } }
+@media (max-width: 520px){ .footer-grid{ grid-template-columns: 1fr; } }
+
+/* ========== WHATSAPP FLOAT ========== */
+.wa-float{ position: fixed; bottom: 24px; right: 24px; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: grid; place-items: center; color: #fff; z-index: 80; box-shadow: 0 12px 28px -6px rgba(37,211,102,.5); transition: transform var(--t); }
+.wa-float::before{ content:""; position: absolute; inset: -8px; border-radius: 50%; border: 1.5px solid rgba(37,211,102,.28); animation: pulse 3.4s ease-in-out infinite; }
+@keyframes pulse{ 0%{ transform: scale(1); opacity: 1; } 100%{ transform: scale(1.4); opacity: 0; } }
+.wa-float:hover{ transform: scale(1.1); }
+:root[data-mood="dark"] .wa-float{ box-shadow: 0 0 0 1.5px rgba(255,255,255,.22), 0 14px 30px -8px rgba(0,0,0,.7); }
+.wa-float svg{ width: 28px; height: 28px; }
+
+/* ========== REVEAL ========== */
+.reveal{ opacity: 0; transform: translateY(34px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.reveal.in{ opacity: 1; transform: none; }
+.reveal[data-delay="1"]{ transition-delay: .08s; }
+.reveal[data-delay="2"]{ transition-delay: .16s; }
+.reveal[data-delay="3"]{ transition-delay: .24s; }
+.reveal[data-delay="4"]{ transition-delay: .32s; }
+.reveal[data-delay="5"]{ transition-delay: .4s; }
+@media (prefers-reduced-motion: reduce){ *{ animation: none !important; transition: none !important; } .reveal{ opacity: 1; transform: none; } }
+
+/* ===================================================================
+   FULL-PAGE DOTTED SURFACE (fixed, behind everything)
+   =================================================================== */
+#pageDots{ position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .5; }
+#pageDots canvas{ display: block; width: 100% !important; height: 100% !important; }
+:root[data-mood="dark"] #pageDots{ opacity: .85; filter: brightness(1.6) saturate(1.15); }
+
+/* Let neutral light sections reveal the page backdrop; cards keep their own surfaces */
+.areas, .about, .mvv, .services, .esg, .knowledge, .clients{ background: transparent; }
+
+/* ===================================================================
+   TWEAKABLE EXPRESSIVE VARIANTS
+   =================================================================== */
+
+/* ---- ATMOSFERA: clean (cooler pure white) ---- */
+:root[data-mood="clean"]{
+  --bg: #FFFFFF; --bg-soft: #EFF3FA; --surface: #FFFFFF;
+  --line: rgba(16,33,59,.09); --line-strong: rgba(16,33,59,.15); --hair: rgba(16,33,59,.10);
+}
+
+/* ---- ATMOSFERA: dark (premium noturno) ---- */
+:root[data-mood="dark"]{
+  --bg: #0A1326; --bg-soft: #0C1832; --surface: #111F40;
+  --ink: #ECF1FB; --ink-soft: rgba(236,241,251,.72); --ink-mute: rgba(236,241,251,.5);
+  --navy: #16295C; --navy-mid: #21408C; --navy-deep: #08112A;
+  --blue-deep: #7FB2FF;
+  --line: rgba(255,255,255,.09); --line-strong: rgba(255,255,255,.18); --hair: rgba(255,255,255,.1);
+  --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 3px 14px rgba(0,0,0,.32);
+  --shadow-2: 0 12px 34px -18px rgba(0,0,0,.72), 0 2px 10px rgba(0,0,0,.4);
+  --shadow-3: 0 34px 70px -34px rgba(0,0,0,.85), 0 8px 26px rgba(0,0,0,.45);
+}
+:root[data-mood="dark"] .header.scrolled{ background: rgba(9,17,34,.8); box-shadow: 0 8px 30px -18px rgba(0,0,0,.8); }
+:root[data-mood="dark"] .area-pill{ color: #EAF0FB; background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.14); }
+:root[data-mood="dark"] .axis-badge .tt{ color: #44506A; }
+:root[data-mood="dark"] .axis-badge .tt b{ color: #14213B; }
+:root[data-mood="dark"] .areas-label{ color: rgba(255,255,255,.5); }
+:root[data-mood="dark"] .area-pill:hover{ color: #fff; background: var(--blue-deep); border-color: var(--blue-deep); }
+:root[data-mood="dark"] .value .ic{ color: #F7E89B; background: rgba(211,175,55,.12); border-color: rgba(211,175,55,.32); }
+:root[data-mood="dark"] .know-item .ic{ color: var(--blue-bright); background: rgba(255,255,255,.05); }
+:root[data-mood="dark"] .client-mark{ color: #9FB4D8; }
+:root[data-mood="dark"] .btn-ghost:hover{ background: rgba(255,255,255,.1); color: #fff; }
+:root[data-mood="dark"] .esg-card .tag{ color: var(--blue-bright); }
+:root[data-mood="dark"] .comp-card h3 svg{ color: var(--blue-bright); }
+:root[data-mood="dark"] .about-quote{ border-left-color: var(--blue-bright); }
+:root[data-mood="dark"] .about-quote .lat{ color: var(--blue-bright); }
+:root[data-mood="dark"] .about-quote p{ color: var(--ink); }
+
+/* ---- VOZ TIPOGRÁFICA: moderno (all-Montserrat, no serif) ---- */
+:root[data-type="moderno"] h1,
+:root[data-type="moderno"] h2,
+:root[data-type="moderno"] .values-head h3{ font-family: 'Montserrat', sans-serif; font-weight: 800; letter-spacing: -.025em; }
+:root[data-type="moderno"] .hero h1 .accent,
+:root[data-type="moderno"] .cta-final h2 span{ font-style: normal; font-weight: 800; }
+:root[data-type="moderno"] .about-quote p{ font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 500; font-size: 18px; }
+
+/* ---- ENERGIA: sereno (slow, soft) ---- */
+:root[data-energy="sereno"]{ --t-fast: .4s var(--ease); --t: .7s var(--ease); --t-slow: 1.2s var(--ease); }
+:root[data-energy="sereno"] .reveal{ transition-duration: 1.25s; }
+:root[data-energy="sereno"] .cta-final::before{ animation-duration: 90s; opacity: .7; }
+:root[data-energy="sereno"] .wa-anim{ animation-duration: 3.4s; }
+
+/* ---- ENERGIA: vivo (snappy, saturated) ---- */
+:root[data-energy="vivo"]{ --t-fast: .15s var(--ease); --t: .26s var(--ease); --t-slow: .5s var(--ease); --blue: #2E80FF; --blue-bright: #8AB9FF; }
+:root[data-energy="vivo"] .reveal{ transition-duration: .6s; }
+:root[data-energy="vivo"] .cta-final::before{ animation-duration: 32s; opacity: 1; }
+:root[data-energy="vivo"] .wa-anim{ animation-duration: 1.1s; }
+
+/* ===================================================================
+   TWEAKS PANEL
+   =================================================================== */
+#tweaks{ position: fixed; left: 22px; bottom: 22px; z-index: 120; width: 286px; max-width: calc(100vw - 44px);
+  background: rgba(255,255,255,.92); backdrop-filter: saturate(160%) blur(20px); -webkit-backdrop-filter: saturate(160%) blur(20px);
+  border: 1px solid rgba(16,33,59,.1); border-radius: 18px; box-shadow: 0 30px 70px -30px rgba(0,18,56,.5), 0 8px 24px rgba(0,18,56,.12);
+  padding: 18px 18px 20px; font-family: 'Montserrat', sans-serif; color: #16213B; display: none; }
+#tweaks.show{ display: block; animation: tweakIn .3s var(--ease); }
+@keyframes tweakIn{ from{ opacity: 0; transform: translateY(12px); } to{ opacity: 1; transform: none; } }
+#tweaks .tw-head{ display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+#tweaks .tw-title{ font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #16213B; }
+#tweaks .tw-x{ width: 26px; height: 26px; border-radius: 8px; border: 1px solid rgba(16,33,59,.14); background: transparent; color: #45526B; cursor: pointer; display: grid; place-items: center; transition: all .2s; }
+#tweaks .tw-x:hover{ background: rgba(16,33,59,.06); color: #16213B; }
+#tweaks .tw-row{ margin-top: 15px; }
+#tweaks .tw-row:first-of-type{ margin-top: 0; }
+#tweaks .tw-label{ font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6B7790; margin-bottom: 8px; }
+#tweaks .seg{ display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; background: rgba(16,33,59,.06); border-radius: 11px; padding: 4px; }
+#tweaks .seg button{ font-family: inherit; font-size: 12px; font-weight: 600; color: #45526B; background: transparent; border: 0; border-radius: 8px; padding: 9px 6px; cursor: pointer; transition: all .22s var(--ease); white-space: nowrap; }
+#tweaks .seg button:hover{ color: #16213B; }
+#tweaks .seg button.on{ background: #001B5B; color: #fff; box-shadow: 0 4px 12px -5px rgba(0,27,91,.7); }
+@media (max-width: 560px){ #tweaks{ left: 12px; right: 12px; bottom: 12px; width: auto; } }
+</style>
+</head>
+<body>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" rx="20" fill="#0A1F44"></rect>
+    <path d="M30 64 L52 30 L58 34 L40 64 Z" fill="#C2703D"></path>
+    <text x="50" y="60" font-family="Montserrat, sans-serif" font-size="34" font-weight="800" fill="#ffffff" text-anchor="middle">HS</text>
+  </svg>
+</template>
+
+<div id="pageDots" aria-hidden="true"></div>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#top" class="brand" aria-label="HAXISS — Início">
+      <span class="brand-text">
+        <span class="brand-name gold-text">HAXISS</span>
+        <span class="brand-tag">CONSULTORIA &amp; SERVIÇOS
+
+</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#top">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#ssma">SSMA</a>
+      <a href="#esg">Governança &amp; ESG</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="header-cta">
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8L6 18M18 6l1.8-1.8" stroke-linecap="round"></path></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+      </button>
+      <a href="https://wa.me/5521980301862?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os" target="_blank" rel="noopener" class="btn btn-blue" style="background-color: rgb(2, 199, 107)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163A11.86 11.86 0 010 11.92C0 5.34 5.36 0 11.945 0c3.196 0 6.198 1.243 8.456 3.5a11.815 11.815 0 013.495 8.42c-.003 6.58-5.363 11.92-11.948 11.92a11.93 11.93 0 01-5.706-1.45L.057 24zm6.597-3.807c1.676.995 3.276 1.592 5.392 1.593 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.885a9.86 9.86 0 001.51 5.255l-.999 3.648 3.978-.604zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>
+        <span>Falar com Especialista</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"></path></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-top">
+    <span class="brand-name" style="color:#fff;font-weight:800;letter-spacing:.16em;">HAXISS</span>
+    <button class="drawer-close" id="drawerClose" aria-label="Fechar menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"></path></svg>
+    </button>
+  </div>
+  <a href="#top">Início</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#ssma">SSMA</a>
+  <a href="#esg">Governança &amp; ESG</a>
+  <a href="#conhecimento">Conhecimento</a>
+  <a href="#contato">Contato</a>
+  <a href="https://wa.me/5521980301862?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os" target="_blank" rel="noopener" class="btn btn-blue" style="margin-top:24px;justify-content:center;">Falar com Especialista</a>
+</aside>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-grid-overlay" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow on-dark reveal">Consultoria · Suporte · Soluções Empresariais</span>
+      <h1 class="reveal" data-delay="1">
+        Direção, organização e <span class="accent">resultado</span> para a sua empresa.
+      </h1>
+      <p class="hero-sub reveal" data-delay="2">
+        Desenvolvemos soluções em consultoria empresarial, treinamento profissional, apoio corporativo e suporte técnico-administrativo para organizações que buscam eficiência, desenvolvimento e melhoria contínua.
+      </p>
+      <div class="hero-actions reveal" data-delay="3">
+        <a href="https://wa.me/5521980301862?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os" target="_blank" rel="noopener" class="btn btn-blue" style="background-color: rgb(2, 199, 107)">
+          Agendar Consultoria
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </a>
+        <a href="#servicos" class="btn btn-ghost on-dark">Conhecer Serviços</a>
+      </div>
+      <div class="hero-pillars reveal" data-delay="4">
+        <div class="pillar">
+          <div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 12l5-3" stroke-linecap="round"></path><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"></circle></svg>Direção</div>
+          <div class="v">Eixo e orientação para decisões mais seguras.</div>
+        </div>
+        <div class="pillar">
+          <div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="7" height="7" rx="1.5"></rect><rect x="14" y="4" width="7" height="7" rx="1.5"></rect><rect x="3" y="15" width="7" height="5" rx="1.5"></rect><rect x="14" y="13" width="7" height="7" rx="1.5"></rect></svg>Organização</div>
+          <div class="v">Processos, pessoas e operações estruturados.</div>
+        </div>
+        <div class="pillar">
+          <div class="k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 7h7v7" stroke-linecap="round" stroke-linejoin="round"></path></svg>Resultado</div>
+          <div class="v">Melhoria contínua e desempenho sustentável.</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal" data-delay="2">
+      <div class="hero-logo-frame">
+        <img src="assets/logo.png" alt="Logotipo HAXISS Consultoria e Serviços">
+      </div>
+    </div>
+  </div>
+  <a href="#areas" class="hero-scroll" aria-label="Rolar para baixo">
+    <span>
+</span>
+    <span class="line"></span>
+  </a>
+</section>
+
+<!-- ===== STRATEGIC AREAS ===== -->
+<section class="areas" id="areas" style="padding:30px 0;">
+  <div class="container areas-inner">
+    <span class="areas-label">Áreas estratégicas de atuação</span>
+    <div class="areas-items">
+      <span class="area-pill">Gestão e Governança</span>
+      <span class="area-pill">Educação e Capacitação</span>
+      <span class="area-pill">Desenvolvimento Institucional</span>
+      <span class="area-pill">Inovação e Conhecimento</span>
+      <span class="area-pill">Sustentabilidade e ESG</span>
+      <span class="area-pill">Apoio Corporativo</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUEM SOMOS ===== -->
+<section class="about" id="sobre">
+  <div class="container about-grid" style="font-family: Montserrat; font-weight: 400">
+    <div class="about-figure reveal">
+      <img src="assets/about.jpg" alt="Equipe HAXISS em reunião de estratégia" loading="lazy">
+      <div class="axis-badge">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18" stroke-linecap="round"></path><circle cx="12" cy="12" r="3.4"></circle></svg>
+        </span>
+        <span class="tt" style="font-size: 13px"><b>HAXISS</b> nasce de “Axis” — do latim, <b>eixo, direção e ponto de orientação.</b></span>
+      </div>
+    </div>
+    <div class="about-text reveal" data-delay="1">
+      <span class="eyebrow">Quem Somos</span>
+      <h2>O eixo entre conhecimento, estratégia, pessoas e processos.</h2>
+      <p class="about-lead">
+        A HAXISS nasceu da convicção de que o desenvolvimento das organizações depende da capacidade de <b class="gold-text">compreender desafios, estruturar soluções e direcionar esforços</b> para resultados consistentes.
+      </p>
+      <p class="about-body" style="font-size: 18px; font-weight: 400">O conceito  <b class="gold-text">HAXISS</b> representa a essência da empresa: atuar como elemento de conexão entre conhecimento, estratégia, pessoas e processos, contribuindo para que organizações encontrem caminhos mais eficientes, sustentáveis e alinhados aos seus objetivos.</p>
+      <p class="about-body" style="font-size: 18px; font-weight: 400; margin-top: 18px">Em um ambiente cada vez mais complexo e dinâmico, atuamos de forma multidisciplinar — integrando gestão, desenvolvimento humano, educação, processos organizacionais e apoio técnico — para transformar desafios em oportunidades de crescimento. Atuamos também no apoio à gestão de Saúde, Segurança e Meio Ambiente (SSMA), fortalecendo a cultura preventiva, a conformidade legal e a sustentabilidade organizacional.</p>
+      <div class="about-cta">
+        <a href="#servicos" class="btn btn-navy">Conhecer Soluções</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MISSÃO / VISÃO / VALORES ===== -->
+<section class="mvv">
+  <div class="container">
+    <div class="mvv-top">
+      <div class="mvv-card reveal">
+        <div class="mh">
+          <span class="ic ic-img" aria-hidden="true"><img src="assets/goal.jpg" alt="" loading="lazy"></span>
+          <h3>Missão</h3>
+        </div>
+        <p>Oferecer soluções em consultoria, suporte empresarial, capacitação profissional, gestão de SSMA e desenvolvimento organizacional — contribuindo para a estruturação de processos, o fortalecimento das equipes, a promoção da segurança e a melhoria do desempenho, por meio do conhecimento, da ética e da busca contínua por resultados.</p>
+      </div>
+      <div class="mvv-card alt reveal" data-delay="1">
+        <div class="mh">
+          <span class="ic ic-img" aria-hidden="true"><img src="assets/vision.jpg" alt="" loading="lazy"></span>
+          <h3>Visão</h3>
+        </div>
+        <p>Ser reconhecida como organização de referência em consultoria, gestão, SSMA, desenvolvimento institucional e capacitação profissional — destacando-se pela excelência técnica, geração de conhecimento aplicado e contribuição para o desenvolvimento sustentável de pessoas, organizações e territórios.</p>
+      </div>
+    </div>
+
+    <div class="values-head reveal">
+      <span class="eyebrow">Valores</span>
+      <h3>Os princípios que orientam cada entrega.</h3>
+    </div>
+    <div class="values-grid">
+      <div class="value reveal">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21 7.5 13.5 2 9h7z" stroke-linejoin="round"></path></svg></span>
+        <h4>Direção e Propósito</h4>
+        <p>Foco, clareza e compromisso, orientando ações e decisões para objetivos concretos e sustentáveis.</p>
+      </div>
+      <div class="value reveal" data-delay="1">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z" stroke-linejoin="round"></path><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+        <h4>Ética e Integridade</h4>
+        <p>Transparência, responsabilidade e respeito às pessoas, instituições e normas.</p>
+      </div>
+      <div class="value reveal" data-delay="2">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5a2 2 0 012-2h12v18H6a2 2 0 01-2-2zm0 0a2 2 0 012-2h12" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+        <h4>Conhecimento e Desenvolvimento</h4>
+        <p>Educação, ciência e inovação como instrumentos para transformar realidades e promover evolução.</p>
+      </div>
+      <div class="value reveal" data-delay="3">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"></circle><path d="M8 13l-2 8 6-3 6 3-2-8" stroke-linejoin="round"></path></svg></span>
+        <h4>Excelência</h4>
+        <p>Elevados padrões de qualidade, valorizando competência técnica, organização e melhoria contínua.</p>
+      </div>
+      <div class="value reveal">
+        <span class="ic" aria-hidden="true" style="background-color: rgba(211, 175, 55, 0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="9" r="3"></circle><circle cx="17" cy="9" r="3"></circle><path d="M2 20c0-3 2.7-5 6-5s6 2 6 5M14 15c2.5 0 8 1 8 5" stroke-linecap="round"></path></svg></span>
+        <h4>Colaboração</h4>
+        <p>Trabalho conjunto, diversidade de ideias e soluções construídas por meio do diálogo e da cooperação.</p>
+      </div>
+      <div class="value reveal" data-delay="1">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21c-5-4-8-7-8-11a4 4 0 017-2.6A4 4 0 0120 10c0 4-3 7-8 11z" stroke-linejoin="round"></path><path d="M12 8v4l2 1" stroke-linecap="round"></path></svg></span>
+        <h4>Responsabilidade Socioambiental</h4>
+        <p>Contribuir para o desenvolvimento sustentável, respeitando pessoas, comunidades e o meio ambiente.</p>
+      </div>
+      <div class="value reveal" data-delay="2">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18" stroke-linecap="round"></path><path d="M7 14l4-4 3 3 5-6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+        <h4>Compromisso com Resultados</h4>
+        <p>Transformar conhecimento em ação, gerando impacto positivo, eficiência e valor para clientes e parceiros.</p>
+      </div>
+      <div class="value reveal" data-delay="3" style="display:flex;flex-direction:column;justify-content:center;background:linear-gradient(155deg,var(--navy),var(--navy-deep));border:none;color:#fff;">
+        <h4 style="color:#fff;">Nosso Compromisso</h4>
+        <p style="color:rgba(255,255,255,.78);">Organizações mais éticas, seguras e sustentáveis estão mais preparadas para gerar valor duradouro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVIÇOS ===== -->
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="section-head">
+      <div class="reveal">
+        <span class="eyebrow">Serviços</span>
+        <h2>Soluções multidisciplinares, organizadas em seis frentes.</h2>
+      </div>
+      <p class="reveal" data-delay="1">Da consultoria estratégica ao apoio técnico-administrativo, da capacitação à gestão de SSMA — uma atuação integrada para estruturar e desenvolver a sua organização.</p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+        <h3>Consultoria Empresarial</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Estruturação de processos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Gestão organizacional</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Apoio à tomada de decisão</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Desenvolvimento institucional</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal" data-delay="1">
+        <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"></circle><path d="M3 20v-1a5 5 0 015-5h2a5 5 0 015 5v1" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16 4a3 3 0 010 6M19 20v-1a4.5 4.5 0 00-2.5-4" stroke-linecap="round"></path></svg></span>
+        <h3>Recursos Humanos</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Recrutamento e seleção</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Desenvolvimento de equipes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Capacitação profissional</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Gestão de pessoas</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal" data-delay="2">
+        <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10l-10-5L2 10l10 5 10-5z" stroke-linejoin="round"></path><path d="M6 12v5c3 2 9 2 12 0v-5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+        <h3>Treinamentos e Capacitações</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Desenvolvimento profissional</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Treinamentos corporativos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Informática</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Educação continuada</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal">
+        <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 8h8M8 12h8M8 16h5" stroke-linecap="round"></path></svg></span>
+        <h3>Apoio Técnico e Administrativo</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Fiscalização e acompanhamento</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Controle de indicadores</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Organização documental</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Suporte administrativo</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal" data-delay="1">
+        <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 16.5 7.5 18.2l1-5.5-4-3.9 5.5-.8z" stroke-linejoin="round"></path></svg></span>
+        <h3>Desenvolvimento Técnico e Educacional</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Materiais técnicos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Conteúdos educacionais</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Produção técnico-científica</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Workshops e seminários</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal" data-delay="2">
+        <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linejoin="round"></path><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+        <h3>Saúde, Segurança e Meio Ambiente</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="txt">Consultoria em SSMA</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Indicadores e conformidade legal</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Procedimentos e instruções de trabalho</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Capacitações e cultura de segurança</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SSMA BAND ===== -->
+<section class="ssma" id="ssma">
+  <div class="container ssma-grid">
+    <div class="ssma-text reveal">
+      <span class="eyebrow on-dark">Saúde, Segurança e Meio Ambiente</span>
+      <h2>A proteção da vida deve estar sempre em primeiro lugar.</h2>
+      <p class="ssma-lead">
+        Apoiamos iniciativas voltadas à promoção da saúde, da segurança e da sustentabilidade nas organizações — fortalecendo a <b class="gold-bright">cultura preventiva</b>, a gestão de riscos e a conformidade com requisitos legais e institucionais.
+      </p>
+      <ul class="ssma-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Consultoria em SSMA</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="txt">Gestão e acompanhamento de indicadores</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="txt">Treinamentos e capacitações</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="txt">Gestão de requisitos legais e contratuais</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="txt">Fortalecimento da cultura de segurança</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="txt">Melhoria contínua dos processos</span></li>
+      </ul>
+    </div>
+    <div class="ssma-figure reveal" data-delay="1">
+      <span class="ssma-tag" style="font-size: 14px; font-weight: 500">SSMA</span>
+      <img src="assets/ssma.png" alt="Saúde, Segurança e Meio Ambiente — profissionais com EPIs em ambiente industrial sustentável" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ===== GOVERNANÇA, COMPLIANCE & ESG ===== -->
+<section class="esg" id="esg">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow center reveal gold-text">Governança, Compliance &amp; ESG</span>
+      <h2 class="reveal" data-delay="1">Integridade, sustentabilidade e desenvolvimento.</h2>
+      <p class="reveal" data-delay="2">Resultados sustentáveis são construídos pela combinação entre ética, conhecimento, responsabilidade e compromisso com as pessoas — em relações transparentes com clientes, parceiros, colaboradores e a sociedade.</p>
+    </div>
+
+    <div class="esg-grid">
+      <article class="esg-card env reveal">
+        <span class="ic ic-photo" aria-hidden="true"><img src="assets/esg-env.png" alt="" loading="lazy"></span>
+        <span class="tag">Environmental</span>
+        <h3>Ambiental</h3>
+        <p>Conservação ambiental e uso responsável dos recursos naturais, incentivando práticas sustentáveis e a consciência socioambiental.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Educação e gestão ambiental</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Sustentabilidade organizacional</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Boas práticas ambientais</li>
+        </ul>
+      </article>
+
+      <article class="esg-card soc reveal" data-delay="1">
+        <span class="ic ic-photo" aria-hidden="true"><img src="assets/esg-soc.png" alt="" loading="lazy"></span>
+        <span class="tag">Social</span>
+        <h3>Social</h3>
+        <p>O conhecimento como ferramenta de transformação social — formando pessoas mais preparadas para os desafios do presente e do futuro.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Valorização e desenvolvimento das pessoas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Diversidade, respeito e qualificação</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Fortalecimento institucional e comunitário</li>
+        </ul>
+      </article>
+
+      <article class="esg-card gov reveal" data-delay="2">
+        <span class="ic ic-photo" aria-hidden="true"><img src="assets/esg-gov.png" alt="" loading="lazy"></span>
+        <span class="tag">Governance</span>
+        <h3>Governança</h3>
+        <p>Cultura baseada em ética, responsabilidade e melhoria contínua, com processos bem estruturados e decisões responsáveis.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Transparência e prestação de contas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Decisões baseadas em evidências</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Gestão eficiente de recursos</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="compliance">
+      <div class="comp-card reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z" stroke-linejoin="round"></path><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Compliance e Integridade</h3>
+        <p>Princípios de integridade e conformidade voltados à prevenção de riscos, à promoção da ética e ao fortalecimento da confiança nas relações profissionais.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Atuação ética e transparente</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Prevenção de conflitos de interesse</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Respeito à legislação vigente e aos direitos humanos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Avaliação de terceiros por critérios de conformidade e risco</li>
+        </ul>
+      </div>
+      <div class="comp-card reveal" data-delay="1">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h12" stroke-linecap="round"></path></svg>Compromissos de Governança</h3>
+        <p>Práticas que fortalecem a confiança nas relações institucionais e apoiam a gestão eficiente de recursos, processos e pessoas.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Transparência nas relações institucionais e comerciais</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Responsabilidade na gestão de processos e informações</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Respeito às legislações e normas aplicáveis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Soluções alinhadas aos objetivos dos clientes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONHECIMENTO ===== -->
+<section class="knowledge" id="conhecimento">
+  <div class="container know-grid">
+    <div class="know-text reveal">
+      <span class="eyebrow">Conhecimento</span>
+      <h2>O conhecimento como ativo de desenvolvimento.</h2>
+      <p style="margin-top:20px;font-size:16px;line-height:1.7;">Valorizamos o conhecimento como ferramenta de transformação. Produzimos e publicamos conteúdo técnico e educacional para apoiar a evolução de pessoas e organizações.</p>
+      <div class="know-items">
+        <div class="know-item">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h11l3 3v13H5z" stroke-linejoin="round"></path><path d="M8 9h8M8 13h8M8 17h5" stroke-linecap="round"></path></svg></span>
+          <span class="nm">Artigos &amp; Publicações
+</span>
+        </div>
+        <div class="know-item">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6l9-3 9 3-9 3z" stroke-linejoin="round"></path><path d="M7 9v6c0 1.5 10 1.5 10 0V9" stroke-linecap="round"></path></svg></span>
+          <span class="nm">Estudos</span>
+        </div>
+        <div class="know-item">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5a2 2 0 012-2h12v18H6a2 2 0 01-2-2zm0 0a2 2 0 012 2h12" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+          <span class="nm">E-books</span>
+        </div>
+        <div class="know-item">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 8h8M8 12h8M8 16h5" stroke-linecap="round"></path></svg></span>
+          <span class="nm">Materiais técnicos</span>
+        </div>
+      </div>
+    </div>
+    <div class="know-figure reveal" data-delay="1">
+      <img src="assets/knowledge.jpg" alt="Produção de conteúdo técnico e educacional" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLIENTES ===== -->
+<section class="clients">
+  <div class="container">
+    <div class="clients-label"><span class="gold-text">Clientes e parceiros</span></div>
+    <div class="clients-row">
+      <span class="client-mark">USIMIG</span>
+      <span class="client-mark">TRANSPES</span>
+      <span class="client-mark">CASE</span>
+      <span class="client-mark">MOREIRA SERVICE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="cta-final" id="contato">
+  <div class="cta-dots" id="ctaDots" aria-hidden="true"></div>
+  <div class="container cta-inner">
+    <span class="eyebrow on-dark center reveal">Vamos conversar</span>
+    <h2 class="reveal" data-delay="1">Pronto para elevar sua empresa ao <span>próximo nível?</span></h2>
+    <p class="reveal" data-delay="2">Fale com especialistas e descubra como transformar sua operação em um negócio mais estratégico, eficiente e lucrativo.</p>
+    <div class="actions reveal" data-delay="3">
+      <a href="https://wa.me/5521980301862?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os" target="_blank" rel="noopener" class="btn btn-xl btn-blue" style="background-color: rgb(2, 199, 107)">
+        Agendar Consultoria Estratégica
+        <svg class="wa-anim" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163A11.86 11.86 0 010 11.92C0 5.34 5.36 0 11.945 0c3.196 0 6.198 1.243 8.456 3.5a11.815 11.815 0 013.495 8.42c-.003 6.58-5.365 11.92-11.948 11.92a11.94 11.94 0 01-5.71-1.456L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" style="fill: rgb(235, 235, 235)"></path></svg>
+      </a>
+    </div>
+    <div class="cta-trust reveal" data-delay="4">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Resposta em até 24h úteis</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Diagnóstico inicial sem custo</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path></svg> Sigilo absoluto sobre as informações</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span>
+            <div class="nm">HAXISS</div>
+            <div class="tg" style="font-size: 10px">CONSULTORIA E SERVIÇOS LTDA
+CNPJ:66.841.744/0001-47</div>
+          </span>
+        </div>
+        <p>Consultoria, suporte e soluções empresariais com direção, organização e resultado. Atuamos como elemento de conexão entre conhecimento, estratégia, pessoas e processos.</p>
+      </div>
+
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#top">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#ssma">SSMA</a></li>
+          <li><a href="#esg">Governança &amp; ESG</a></li>
+          <li><a href="#conhecimento">Conhecimento</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#servicos">Consultoria Empresarial</a></li>
+          <li><a href="#servicos">Recursos Humanos</a></li>
+          <li><a href="#servicos">Treinamentos</a></li>
+          <li><a href="#servicos">Apoio Técnico</a></li>
+          <li><a href="#ssma">SSMA</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contato</h4>
+        <div class="contacts">
+          <div class="row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 7l10 7L22 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span>contato@haxiss.com</span>
+          </div>
+          <div class="row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span>(21) 98030-1862</span>
+          </div>
+          <div class="row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke-linejoin="round"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Atendimento em todo o Brasil</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 HAXISS Consultoria e Serviços Ltda. Todos os direitos reservados.</div>
+      <div class="legal">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+        <a href="#esg">
+</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5521980301862?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os" target="_blank" rel="noopener" class="wa-float" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163A11.86 11.86 0 010 11.92C0 5.34 5.36 0 11.945 0c3.196 0 6.198 1.243 8.456 3.5a11.815 11.815 0 013.495 8.42c-.003 6.58-5.363 11.92-11.948 11.92a11.93 11.93 0 01-5.706-1.45L.057 24zm6.597-3.807c1.676.995 3.276 1.592 5.392 1.593 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.885a9.86 9.86 0 001.51 5.255l-.999 3.648 3.978-.604zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>
+</a>
+
+<!-- ===== TWEAKS PANEL ===== -->
+<aside id="tweaks" aria-label="Tweaks">
+  <div class="tw-head">
+    <span class="tw-title">Tweaks</span>
+    <button class="tw-x" id="twClose" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"></path></svg>
+    </button>
+  </div>
+  <div class="tw-row">
+    <div class="tw-label">Atmosfera</div>
+    <div class="seg" data-key="mood">
+      <button data-val="ivory">Ivory</button>
+      <button data-val="clean">Clean</button>
+      <button data-val="dark">Noturno</button>
+    </div>
+  </div>
+  <div class="tw-row">
+    <div class="tw-label">Voz tipográfica</div>
+    <div class="seg" data-key="type">
+      <button data-val="editorial">Editorial</button>
+      <button data-val="moderno">Moderno</button>
+    </div>
+  </div>
+  <div class="tw-row">
+    <div class="tw-label">Energia</div>
+    <div class="seg" data-key="energy">
+      <button data-val="sereno">Sereno</button>
+      <button data-val="equilibrado">Equilíbrio</button>
+      <button data-val="vivo">Vivo</button>
+    </div>
+  </div>
+</aside>
+
+<script>
+(function(){
+  const TWEAKS = /*EDITMODE-BEGIN*/{
+    "mood": "ivory",
+    "type": "moderno",
+    "energy": "sereno"
+  }/*EDITMODE-END*/;
+
+  const state = Object.assign({}, TWEAKS);
+  const panel = document.getElementById('tweaks');
+  const DOT_SPEED = { sereno: 0.028, equilibrado: 0.05, vivo: 0.092 };
+
+  function apply(){
+    const r = document.documentElement;
+    r.setAttribute('data-mood', state.mood);
+    r.setAttribute('data-type', state.type);
+    r.setAttribute('data-energy', state.energy);
+    window.__dotSpeed = DOT_SPEED[state.energy] || 0.05;
+    panel.querySelectorAll('.seg').forEach(seg => {
+      const key = seg.getAttribute('data-key');
+      seg.querySelectorAll('button').forEach(b => {
+        b.classList.toggle('on', b.getAttribute('data-val') === state[key]);
+      });
+    });
+  }
+
+  panel.querySelectorAll('.seg').forEach(seg => {
+    const key = seg.getAttribute('data-key');
+    seg.querySelectorAll('button').forEach(b => {
+      b.addEventListener('click', () => {
+        state[key] = b.getAttribute('data-val');
+        apply();
+        window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: state[key] } }, '*');
+      });
+    });
+  });
+
+  // Tweaks host protocol — register listener BEFORE announcing availability
+  window.addEventListener('message', (e) => {
+    const t = e.data && e.data.type;
+    if(t === '__activate_edit_mode'){ panel.classList.add('show'); }
+    else if(t === '__deactivate_edit_mode'){ panel.classList.remove('show'); }
+  });
+  document.getElementById('twClose').addEventListener('click', () => {
+    panel.classList.remove('show');
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  });
+
+  apply();
+  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+})();
+</script>
+
+<script>
+/* Public light/dark atmosphere toggle (visitor-facing, persisted) */
+(function(){
+  const KEY = 'haxiss-atmosfera';
+  const btn = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  let saved;
+  try { saved = localStorage.getItem(KEY); } catch(e){}
+  if(saved === 'dark' || saved === 'ivory'){ root.setAttribute('data-mood', saved); }
+  const sync = () => {
+    const dark = root.getAttribute('data-mood') === 'dark';
+    btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+  };
+  sync();
+  btn && btn.addEventListener('click', () => {
+    const dark = root.getAttribute('data-mood') === 'dark';
+    const next = dark ? 'ivory' : 'dark';
+    root.setAttribute('data-mood', next);
+    try { localStorage.setItem(KEY, next); } catch(e){}
+    sync();
+  });
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* Dotted wave surface — scoped to the final CTA section */
+(function(){
+  const mount = document.getElementById('ctaDots');
+  if(!mount || typeof THREE === 'undefined') return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const SEPARATION = 150, AMOUNTX = 44, AMOUNTY = 30;
+  let W = mount.clientWidth || 1200, H = mount.clientHeight || 600;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, W / H, 1, 10000);
+  camera.position.set(0, 380, 1180);
+  camera.lookAt(0, 0, 0);
+
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(W, H);
+  renderer.setClearColor(0x000000, 0);
+  mount.appendChild(renderer.domElement);
+
+  const positions = [], colors = [];
+  const geometry = new THREE.BufferGeometry();
+  for(let ix = 0; ix < AMOUNTX; ix++){
+    for(let iy = 0; iy < AMOUNTY; iy++){
+      positions.push(
+        ix * SEPARATION - (AMOUNTX * SEPARATION) / 2,
+        0,
+        iy * SEPARATION - (AMOUNTY * SEPARATION) / 2
+      );
+      colors.push(0.55, 0.72, 1.0); /* soft blue dots */
+    }
+  }
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+  const material = new THREE.PointsMaterial({
+    size: 7, vertexColors: true, transparent: true, opacity: 0.85, sizeAttenuation: true
+  });
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
+
+  let count = 0, animationId = 0, running = false;
+  const drawWave = () => {
+    const pos = geometry.attributes.position.array;
+    let i = 0;
+    for(let ix = 0; ix < AMOUNTX; ix++){
+      for(let iy = 0; iy < AMOUNTY; iy++){
+        pos[i * 3 + 1] = Math.sin((ix + count) * 0.3) * 50 + Math.sin((iy + count) * 0.5) * 50;
+        i++;
+      }
+    }
+    geometry.attributes.position.needsUpdate = true;
+    renderer.render(scene, camera);
+  };
+  const animate = () => {
+    animationId = requestAnimationFrame(animate);
+    drawWave();
+    count += (window.__dotSpeed || 0.05);
+  };
+
+  const resize = () => {
+    W = mount.clientWidth; H = mount.clientHeight;
+    if(!W || !H) return;
+    camera.aspect = W / H; camera.updateProjectionMatrix();
+    renderer.setSize(W, H);
+  };
+  window.addEventListener('resize', resize, { passive: true });
+
+  /* Render whenever the section is on screen; animate only if motion is allowed */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        resize();
+        if(!running){ running = true; animate(); }
+      } else if(running){ running = false; cancelAnimationFrame(animationId); }
+    });
+  }, { threshold: 0.02 });
+  io.observe(mount);
+})();
+</script>
+<script>
+/* Full-page dotted wave surface — fixed, behind all content */
+(function(){
+  const mount = document.getElementById('pageDots');
+  if(!mount || typeof THREE === 'undefined') return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const SEPARATION = 160, AMOUNTX = 60, AMOUNTY = 42;
+  let W = window.innerWidth, H = window.innerHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, W / H, 1, 10000);
+  camera.position.set(0, 420, 1300);
+  camera.lookAt(0, 0, 0);
+
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(W, H);
+  renderer.setClearColor(0x000000, 0);
+  mount.appendChild(renderer.domElement);
+
+  const positions = [], colors = [];
+  const geometry = new THREE.BufferGeometry();
+  for(let ix = 0; ix < AMOUNTX; ix++){
+    for(let iy = 0; iy < AMOUNTY; iy++){
+      positions.push(
+        ix * SEPARATION - (AMOUNTX * SEPARATION) / 2,
+        0,
+        iy * SEPARATION - (AMOUNTY * SEPARATION) / 2
+      );
+      colors.push(0.27, 0.46, 0.92); /* refined blue, reads on ivory and dark */
+    }
+  }
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+  const material = new THREE.PointsMaterial({
+    size: 7.5, vertexColors: true, transparent: true, opacity: 0.95, sizeAttenuation: true
+  });
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
+
+  let count = 0, animationId = 0, running = false;
+  const drawWave = () => {
+    const pos = geometry.attributes.position.array;
+    let i = 0;
+    for(let ix = 0; ix < AMOUNTX; ix++){
+      for(let iy = 0; iy < AMOUNTY; iy++){
+        pos[i * 3 + 1] = Math.sin((ix + count) * 0.3) * 46 + Math.sin((iy + count) * 0.5) * 46;
+        i++;
+      }
+    }
+    geometry.attributes.position.needsUpdate = true;
+    renderer.render(scene, camera);
+  };
+  const animate = () => {
+    animationId = requestAnimationFrame(animate);
+    drawWave();
+    count += (window.__dotSpeed || 0.05) * 0.7;
+  };
+
+  const resize = () => {
+    W = window.innerWidth; H = window.innerHeight;
+    camera.aspect = W / H; camera.updateProjectionMatrix();
+    renderer.setSize(W, H);
+    drawWave();
+  };
+  window.addEventListener('resize', resize, { passive: true });
+
+  const start = () => { if(running) return; running = true; animate(); };
+  const stop  = () => { running = false; cancelAnimationFrame(animationId); };
+  document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
+  drawWave();   /* paint immediately */
+  start();      /* animate regardless of reduced-motion (decorative, requested) */
+})();
+</script>
+<script>
+(function(){
+  const header = document.getElementById('header');
+  const heroBg = document.getElementById('heroBg');
+  const onScroll = () => {
+    const y = window.scrollY;
+    header.classList.toggle('scrolled', y > 40);
+    if(heroBg && y < window.innerHeight){ heroBg.style.transform = `scale(1.08) translateY(${y * 0.16}px)`; }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const drawer = document.getElementById('drawer');
+  const toggle = document.getElementById('menuToggle');
+  const close  = document.getElementById('drawerClose');
+  const openDrawer  = () => { drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); };
+  const closeDrawer = () => { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); };
+  toggle && toggle.addEventListener('click', openDrawer);
+  close  && close.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if(id.length < 2) return;
+      const target = document.querySelector(id);
+      if(!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - (header.classList.contains('scrolled') ? 64 : 84);
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+
+</body></html>
+<style id="__om-edit-overrides">
+#sobre :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >p:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-family: Montserrat !important }
+#sobre :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >p:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 17px !important }
+#sobre :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >p:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 6px !important }
+#sobre :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >p:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 8px !important }
+#sobre :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >p:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 18px !important }
+#sobre :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >p:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 600 !important }
+#sobre :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >p:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 400 !important }
+#sobre :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >p:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-weight: 700 !important }
+#sobre :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >p:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { margin: 20px 0px 0px !important }
+#sobre :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >p:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { margin: 22px 0px 0px !important }
+</style>
